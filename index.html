@@ -86,7 +86,7 @@
             background-color: #242424;
         }
 
-        /* Estilo para o botão que é 100% imagem */
+        /* Estilo para botões que são 100% imagem */
         .card-image-btn {
             display: flex;
             justify-content: center;
@@ -100,7 +100,18 @@
 
         .card-image-btn:hover {
             transform: translateY(-4px);
+        }
+
+        .radio-btn:hover {
             box-shadow: 0 6px 18px rgba(236, 72, 153, 0.35);
+        }
+
+        .recipes-btn:hover {
+            box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+        }
+
+        .sable-btn:hover {
+            box-shadow: 0 6px 18px rgba(59, 130, 246, 0.45);
         }
 
         .card-image-btn img {
@@ -111,7 +122,6 @@
         }
 
         .game { border-left-color: var(--accent-games); }
-        .recipe { border-left-color: var(--accent-recipes); }
 
         .icon {
             font-size: 1.5rem;
@@ -126,17 +136,20 @@
 
     <div class="container">
         
-       
-
         <div class="grid">
-            <!-- BOTÃO INTEIRO COM A IMAGEM radio.jpeg -->
-            <a href="https://SEU-LINK-DA-RADIO.com" target="_blank" class="card-image-btn">
+            <!-- BOTÃO RÁDIO -->
+            <a href="https://SEU-LINK-DA-RADIO.com" target="_blank" class="card-image-btn radio-btn">
                 <img src="radio.jpeg" alt="Rádio">
             </a>
 
-            <a href="https://SEU-LINK-DE-RECEITAS.com" target="_blank" class="card recipe">
-                <span class="icon">🍳</span>
-                <span>Site de Receitas</span>
+            <!-- BOTÃO RECEITAS -->
+            <a href="https://SEU-LINK-DE-RECEITAS.com" target="_blank" class="card-image-btn recipes-btn">
+                <img src="receitas.jpeg" alt="Receitas">
+            </a>
+
+            <!-- BOTÃO SABLE LASER -->
+            <a href="https://SEU-LINK-DO-SABLE-LASER.com" target="_blank" class="card-image-btn sable-btn">
+                <img src="sabre.jpeg" alt="Sable Laser">
             </a>
         </div>
 
