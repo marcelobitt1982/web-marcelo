@@ -16,6 +16,7 @@
             --accent-pacman: #ffd000;
             --accent-batalha: #a855f7;
             --accent-sokoban: #f97316;
+            --accent-billard: #06b6d4;
         }
 
         body {
@@ -36,7 +37,7 @@
             align-items: center;
             width: 100%;
             max-width: 240px;
-            margin: 0 auto 24px auto;
+            margin: 0 auto 10px auto;
             border-radius: 16px;
             overflow: hidden;
         }
@@ -49,14 +50,36 @@
             display: block;
         }
 
+        /* Logo / escrita "Web Marcelo" pequena e proporcional abaixo do vídeo */
+        .sub-logo-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 175px;
+            margin: 0 auto 24px auto;
+        }
+
+        .sub-logo-img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
         @media (max-width: 480px) {
             .dj-video-wrapper {
                 max-width: 190px;
-                margin-bottom: 20px;
+                margin-bottom: 8px;
             }
 
             .dj-video {
                 max-height: 180px;
+            }
+
+            .sub-logo-wrapper {
+                max-width: 145px;
+                margin-bottom: 20px;
             }
         }
 
@@ -225,6 +248,23 @@
                 inset 0 0 14px rgba(255, 123, 0, 0.35);
         }
 
+        /* Neon Billard (Ciano) */
+        .billard-btn {
+            border: 2px solid #00e5ff;
+            box-shadow:
+                0 0 8px rgba(0, 229, 255, 0.55),
+                0 0 18px rgba(0, 229, 255, 0.3),
+                inset 0 0 10px rgba(0, 229, 255, 0.2);
+        }
+        .billard-btn:hover {
+            border-color: #70f2ff;
+            box-shadow:
+                0 0 12px rgba(0, 229, 255, 0.9),
+                0 0 28px rgba(0, 229, 255, 0.65),
+                0 0 42px rgba(0, 229, 255, 0.35),
+                inset 0 0 14px rgba(0, 229, 255, 0.35);
+        }
+
         /* Garante que a imagem apareça inteira sem cortes */
         .card-image-btn img {
             max-width: 100%;
@@ -249,7 +289,11 @@
         <video class="dj-video" autoplay loop muted playsinline>
           <source src="marcelo.mp4" type="video/mp4">
         </video>
-      </div>
+    </div>
+
+    <div class="sub-logo-wrapper">
+        <img src="logo.jpeg" alt="Web Marcelo" class="sub-logo-img">
+    </div>
 
     <div class="container">
         
@@ -287,9 +331,9 @@
                 <img src="sokoban.jpeg" alt="Sokoban - Jogo das Caixas">
             </a>
 
-            <a href="https://marcelobitt1982.github.io/billard-marcelo/" target="_blank" class="card game">
-                <span class="icon">🎲</span>
-                <span>Jogo 3</span>
+            <!-- BOTÃO BILLARD -->
+            <a href="https://marcelobitt1982.github.io/billard-marcelo/" target="_blank" class="card-image-btn billard-btn">
+                <img src="billard.jpeg" alt="Billard Marcelo">
             </a>
 
             <a href="https://LINK-DO-JOGO-3.com" target="_blank" class="card game">
