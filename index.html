@@ -12,6 +12,7 @@
             --accent-games: #8b5cf6;
             --accent-radio: #ec4899;
             --accent-recipes: #10b981;
+            --accent-sable: #3b82f6;
         }
 
         body {
@@ -63,7 +64,7 @@
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 16px;
+            gap: 18px;
         }
 
         .card {
@@ -86,38 +87,82 @@
             background-color: #242424;
         }
 
-        /* Estilo para botões que são 100% imagem */
+        /* Botão com imagem inteira e luz de neon */
         .card-image-btn {
             display: flex;
             justify-content: center;
             align-items: center;
-            border-radius: 12px;
-            overflow: hidden;
+            padding: 8px;
+            border-radius: 14px;
+            background-color: #0a0a0a;
             text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
-            background-color: var(--card-bg);
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.25s ease;
         }
 
         .card-image-btn:hover {
             transform: translateY(-4px);
         }
 
+        /* Neon Rádio (Rosa) */
+        .radio-btn {
+            border: 2px solid #ff2a85;
+            box-shadow:
+                0 0 8px rgba(255, 42, 133, 0.55),
+                0 0 18px rgba(255, 42, 133, 0.3),
+                inset 0 0 10px rgba(255, 42, 133, 0.2);
+        }
         .radio-btn:hover {
-            box-shadow: 0 6px 18px rgba(236, 72, 153, 0.35);
+            border-color: #ff66a8;
+            box-shadow:
+                0 0 12px rgba(255, 42, 133, 0.9),
+                0 0 28px rgba(255, 42, 133, 0.65),
+                0 0 42px rgba(255, 42, 133, 0.35),
+                inset 0 0 14px rgba(255, 42, 133, 0.35);
         }
 
+        /* Neon Receitas (Verde) */
+        .recipes-btn {
+            border: 2px solid #00ff9d;
+            box-shadow:
+                0 0 8px rgba(0, 255, 157, 0.55),
+                0 0 18px rgba(0, 255, 157, 0.3),
+                inset 0 0 10px rgba(0, 255, 157, 0.2);
+        }
         .recipes-btn:hover {
-            box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+            border-color: #66ffc4;
+            box-shadow:
+                0 0 12px rgba(0, 255, 157, 0.9),
+                0 0 28px rgba(0, 255, 157, 0.65),
+                0 0 42px rgba(0, 255, 157, 0.35),
+                inset 0 0 14px rgba(0, 255, 157, 0.35);
         }
 
+        /* Neon Sabre Laser (Azul) */
+        .sable-btn {
+            border: 2px solid #00a2ff;
+            box-shadow:
+                0 0 8px rgba(0, 162, 255, 0.55),
+                0 0 18px rgba(0, 162, 255, 0.3),
+                inset 0 0 10px rgba(0, 162, 255, 0.2);
+        }
         .sable-btn:hover {
-            box-shadow: 0 6px 18px rgba(59, 130, 246, 0.45);
+            border-color: #66c5ff;
+            box-shadow:
+                0 0 12px rgba(0, 162, 255, 0.9),
+                0 0 28px rgba(0, 162, 255, 0.65),
+                0 0 42px rgba(0, 162, 255, 0.35),
+                inset 0 0 14px rgba(0, 162, 255, 0.35);
         }
 
+        /* Garante que a imagem apareça inteira sem cortes */
         .card-image-btn img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-width: 100%;
+            max-height: 150px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
             display: block;
         }
 
