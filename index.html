@@ -13,6 +13,7 @@
             --accent-radio: #ec4899;
             --accent-recipes: #10b981;
             --accent-sable: #3b82f6;
+            --accent-pacman: #ffd000;
         }
 
         body {
@@ -155,6 +156,23 @@
                 inset 0 0 14px rgba(0, 162, 255, 0.35);
         }
 
+        /* Neon Pac-Man (Amarelo) */
+        .pacman-btn {
+            border: 2px solid #ffd000;
+            box-shadow:
+                0 0 8px rgba(255, 208, 0, 0.55),
+                0 0 18px rgba(255, 208, 0, 0.3),
+                inset 0 0 10px rgba(255, 208, 0, 0.2);
+        }
+        .pacman-btn:hover {
+            border-color: #ffe466;
+            box-shadow:
+                0 0 12px rgba(255, 208, 0, 0.9),
+                0 0 28px rgba(255, 208, 0, 0.65),
+                0 0 42px rgba(255, 208, 0, 0.35),
+                inset 0 0 14px rgba(255, 208, 0, 0.35);
+        }
+
         /* Garante que a imagem apareça inteira sem cortes */
         .card-image-btn img {
             max-width: 100%;
@@ -200,12 +218,12 @@
 
         <div class="section-title">🎮 Meus Jogos</div>
         <div class="grid">
-            <a href="https://LINK-DO-JOGO-1.com" target="_blank" class="card game">
-                <span class="icon">🕹️</span>
-                <span>Jogo 1</span>
+            <!-- BOTÃO PAC-MAN -->
+            <a href="https://marcelobitt1982.github.io/PAC-MAN-MARCELO/" target="_blank" class="card-image-btn pacman-btn">
+                <img src="pacman.jpeg" alt="PAC-MAN MARCELO">
             </a>
 
-            <a href="https://LINK-DO-JOGO-2.com" target="_blank" class="card game">
+            <a href="https://marcelobitt1982.github.io/batalha-naval/ target="_blank" class="card game">
                 <span class="icon">👾</span>
                 <span>Jogo 2</span>
             </a>
