@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Marcelo - Portal</title>
+    <style>
+        :root {
+            --bg-color: #000000;
+            --card-bg: #161616;
+            --text-color: #ffffff;
+            --accent-games: #8b5cf6;
+            --accent-radio: #ec4899;
+            --accent-recipes: #10b981;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 550px;
+            margin-bottom: 30px;
+        }
+
+        .logo-img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #262626;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Estilo para a imagem do título Principais */
+        .menu-banner-img {
+            max-height: 60px; /* Ajuste a altura aqui caso queira maior ou menor */
+            width: auto;
+            object-fit: contain;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: transform 0.2s, background-color 0.2s;
+            border-left: 5px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            background-color: #242424;
+        }
+
+        .game { border-left-color: var(--accent-games); }
+        .radio { border-left-color: var(--accent-radio); }
+        .recipe { border-left-color: var(--accent-recipes); }
+
+        .icon {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logo-container">
+        <img src="logo.jpeg" alt="Web Marcelo" class="logo-img">
+    </div>
+
+    <div class="container">
+        
+        <!-- IMAGEM SUBSTITUINDO O TÍTULO PRINCIPAIS -->
+        <div class="section-title">
+            <img src="menu.jpeg" alt="Principais" class="menu-banner-img">
+            <span>MENU</span>
+        </div>
+
+        <div class="grid">
+            <a href="https://SEU-LINK-DA-RADIO.com" target="_blank" class="card radio">
+                <span class="icon">📻</span>
+                <span>Minha Rádio</span>
+            </a>
+
+            <a href="https://SEU-LINK-DE-RECEITAS.com" target="_blank" class="card recipe">
+                <span class="icon">🍳</span>
+                <span>Site de Receitas</span>
+            </a>
+        </div>
+
+        <div class="section-title">🎮 Meus Jogos</div>
+        <div class="grid">
+            <a href="https://LINK-DO-JOGO-1.com" target="_blank" class="card game">
+                <span class="icon">🕹️</span>
+                <span>Jogo 1</span>
+            </a>
+
+            <a href="https://LINK-DO-JOGO-2.com" target="_blank" class="card game">
+                <span class="icon">👾</span>
+                <span>Jogo 2</span>
+            </a>
+
+            <a href="https://LINK-DO-JOGO-3.com" target="_blank" class="card game">
+                <span class="icon">🎲</span>
+                <span>Jogo 3</span>
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>
