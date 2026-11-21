@@ -20,6 +20,17 @@
             --accent-chess: #a855f7;
         }
 
+        /* Canvas de ondas animadas ao fundo */
+        #waves-bg {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            background-color: var(--bg-color);
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
@@ -29,6 +40,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
+            position: relative;
+            z-index: 1;
         }
 
         /* Logo / Vídeo em tamanho compacto ideal para celular */
@@ -41,6 +55,7 @@
             margin: 0 auto 10px auto;
             border-radius: 16px;
             overflow: hidden;
+            background-color: rgba(10, 10, 10, 0.75);
         }
 
         .dj-video {
@@ -68,6 +83,12 @@
             display: block;
         }
 
+        .audio-player-container {
+            margin-bottom: 14px;
+            display: flex;
+            justify-content: center;
+        }
+
         @media (max-width: 480px) {
             .dj-video-wrapper {
                 max-width: 190px;
@@ -93,7 +114,7 @@
             font-size: 1.15rem;
             margin: 24px 0 12px 0;
             padding-bottom: 6px;
-            border-bottom: 2px solid #262626;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.14);
             display: flex;
             align-items: center;
         }
@@ -119,7 +140,7 @@
         }
 
         .card {
-            background-color: var(--card-bg);
+            background-color: rgba(22, 22, 22, 0.85);
             padding: 12px 14px;
             border-radius: 10px;
             text-decoration: none;
@@ -145,7 +166,8 @@
             align-items: center;
             padding: 6px;
             border-radius: 12px;
-            background-color: #0a0a0a;
+            background-color: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(4px);
             text-decoration: none;
             overflow: hidden;
             transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.25s ease;
@@ -316,7 +338,7 @@
     </style>
 </head>
 <body>
-
+    <canvas id="waves-bg" aria-hidden="true"></canvas>
 
     <div class="dj-video-wrapper">
         <video class="dj-video" autoplay loop muted playsinline>
@@ -327,17 +349,17 @@
     <div class="sub-logo-wrapper">
         <img src="logo.jpeg" alt="Web Marcelo" class="sub-logo-img">
     </div>
-        
-        <!-- Player de Áudio com a opção de repetição contínua (loop) -->
-  <div class="audio-player-container">
-    <audio controls loop>
-      <source src="audio/funk.mp3" type="audio/mpeg">
-      Seu navegador não suporta o elemento de áudio.
-    </audio>
-  </div>
+
+    <!-- Player de Áudio com a opção de repetição contínua (loop) -->
+    <div class="audio-player-container">
+        <audio controls loop>
+          <source src="audio/funk.mp3" type="audio/mpeg">
+          Seu navegador não suporta o elemento de áudio.
+        </audio>
+    </div>
 
     <div class="container">
-        
+
         <div class="grid">
             <!-- BOTÃO RÁDIO -->
             <a href="https://radiodjmarcelo.pages.dev/" target="_blank" class="card-image-btn radio-btn">
@@ -355,7 +377,7 @@
             </a>
         </div>
 
-        <div class="section-title">🎮 Meus Jogos</div>
+        <div class="section-title">🎮 JOGOS</div>
         <div class="grid">
             <!-- JOGO 1: PAC-MAN -->
             <a href="https://marcelobitt1982.github.io/PAC-MAN-MARCELO/" target="_blank" class="card-image-btn pacman-btn">
@@ -393,11 +415,128 @@
             <a href="https://marcelobitt1982.github.io/jogo-da-cobrinha/" target="_blank" class="card-image-btn chess-btn">
                 <img src="snake.jpeg" alt="Cobrinha Marcelo">
             </a>
-
-           
         </div>
 
     </div>
 
+    <script>
+        (function () {
+            const canvas = document.getElementById('waves-bg');
+            const ctx = canvas.getContext('2d');
+            let width = 0;
+            let height = 0;
+            let time = 0;
+
+            const waves = [
+                {
+                    baseY: 0.72,
+                    amplitude: 28,
+                    frequency: 0.0055,
+                    speed: 0.016,
+                    phase: 0,
+                    color: 'rgba(168, 85, 247, 0.24)',
+                    lineWidth: 2
+                },
+                {
+                    baseY: 0.78,
+                    amplitude: 34,
+                    frequency: 0.0042,
+                    speed: 0.012,
+                    phase: 1.8,
+                    color: 'rgba(255, 42, 133, 0.22)',
+                    lineWidth: 2
+                },
+                {
+                    baseY: 0.84,
+                    amplitude: 24,
+                    frequency: 0.0068,
+                    speed: 0.02,
+                    phase: 3.4,
+                    color: 'rgba(0, 229, 255, 0.22)',
+                    lineWidth: 1.75
+                },
+                {
+                    baseY: 0.90,
+                    amplitude: 30,
+                    frequency: 0.005,
+                    speed: 0.014,
+                    phase: 5.0,
+                    color: 'rgba(0, 255, 157, 0.18)',
+                    lineWidth: 1.5
+                }
+            ];
+
+            function resize() {
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = Math.floor(width * dpr);
+                canvas.height = Math.floor(height * dpr);
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+
+            function drawWaves() {
+                ctx.fillStyle = '#000000';
+                ctx.fillRect(0, 0, width, height);
+
+                // Brilho ambiente sutil no fundo preto
+                const glow = ctx.createRadialGradient(
+                    width * 0.5,
+                    height * 0.85,
+                    20,
+                    width * 0.5,
+                    height * 0.85,
+                    Math.max(width, height) * 0.65
+                );
+                glow.addColorStop(0, 'rgba(139, 92, 246, 0.10)');
+                glow.addColorStop(0.5, 'rgba(236, 72, 153, 0.05)');
+                glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                ctx.fillStyle = glow;
+                ctx.fillRect(0, 0, width, height);
+
+                const step = width < 480 ? 8 : 12;
+
+                waves.forEach((wave) => {
+                    ctx.beginPath();
+                    const originY = height * wave.baseY;
+
+                    for (let x = 0; x <= width + step; x += step) {
+                        const y =
+                            originY +
+                            Math.sin(x * wave.frequency + time * wave.speed + wave.phase) * wave.amplitude +
+                            Math.cos(x * wave.frequency * 0.5 - time * wave.speed * 0.7) * (wave.amplitude * 0.35);
+
+                        if (x === 0) {
+                            ctx.moveTo(x, y);
+                        } else {
+                            ctx.lineTo(x, y);
+                        }
+                    }
+
+                    ctx.strokeStyle = wave.color;
+                    ctx.lineWidth = wave.lineWidth;
+                    ctx.stroke();
+
+                    // Preenchimento suave abaixo de cada linha de onda
+                    ctx.lineTo(width, height);
+                    ctx.lineTo(0, height);
+                    ctx.closePath();
+
+                    const fillGrad = ctx.createLinearGradient(0, originY - wave.amplitude, 0, height);
+                    fillGrad.addColorStop(0, wave.color.replace(/0\.\d+\)$/, '0.07)'));
+                    fillGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                    ctx.fillStyle = fillGrad;
+                    ctx.fill();
+                });
+
+                time += 1;
+                requestAnimationFrame(drawWaves);
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+            drawWaves();
+        })();
+    </script>
 </body>
 </html>
